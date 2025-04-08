@@ -1,5 +1,9 @@
-import { Megaphone } from "lucide-react";
+import { Filter, Megaphone } from "lucide-react";
 import type { Route } from "./+types/home";
+import SearchInput from "~/components/Common/SearchInput";
+import FilterChips from "~/components/Common/FilterChips";
+import AdCard from "~/components/Common/AdCard";
+import AdSpaceCard from "~/components/Common/AdSpaceCard";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,32 +12,49 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+const filters = ["All", "Top creators", "Niche", "Platforms", "Ad type"];
+const adData = [
+  {
+    title: "This must stop!!!",
+    thumbnail: "/thumb-placeholder.jpg",
+    price: 65,
+    goLiveDate: "20/12/2024",
+  },
+  {
+    title: "This must stop!!!",
+    thumbnail: "/thumb-placeholder.jpg",
+    price: 65,
+    goLiveDate: "20/12/2024",
+  },
+  {
+    title: "This must stop!!!",
+    thumbnail: "/thumb-placeholder.jpg",
+    price: 65,
+    goLiveDate: "20/12/2024",
+  },
+  {
+    title: "Clean up your digital space!",
+    thumbnail: "/thumb-placeholder.jpg",
+    price: 80,
+    goLiveDate: "25/12/2024",
+  },
+];
+
+const creators = [
+  { name: "Scanty Explore", price: 50, tag: "SE" },
+  { name: "Abby’s Kitchen", price: 42, tag: "AK" },
+];
+
 const Dashboard = () => {
   return (
     <>
       {/* Search + Filters */}
       <div className="px-4 py-3">
-        <input
-          type="text"
-          placeholder="Search content to sponsor"
-          className="w-full p-2 rounded-md bg-gray-100 text-sm"
+        <SearchInput placeholder="Search Ad space to sponsor" />
+        <FilterChips
+          filters={filters}
+          onChange={(selected) => console.log("Selected filter:", selected)}
         />
-        <div className="flex gap-2 mt-3 flex-wrap text-sm">
-          {["All", "Top creators", "Niche", "Platforms", "Ad type"].map(
-            (item, i) => (
-              <span
-                key={i}
-                className={`px-3 py-1 rounded-full ${
-                  item === "All"
-                    ? "bg-[#805CF7] text-white"
-                    : "bg-gray-100 text-gray-600"
-                }`}
-              >
-                {item}
-              </span>
-            )
-          )}
-        </div>
       </div>
 
       {/* Going Live Section */}
@@ -42,25 +63,14 @@ const Dashboard = () => {
           Going live
         </span>
         <div className="grid grid-cols-2 gap-4 mt-3">
-          {[...Array(4)].map((_, i) => (
-            <div
+          {adData.map((ad, i) => (
+            <AdCard
               key={i}
-              className="bg-white rounded-lg shadow-sm p-2 text-sm border"
-            >
-              <img
-                src="/thumb-placeholder.jpg" // You can use actual thumbnails here
-                className="w-full h-24 object-cover rounded-md"
-                alt="Ad Thumbnail"
-              />
-              <div className="mt-2 font-medium">This must stop!!!</div>
-              <div className="text-red-500 text-xs">
-                Going live - 20/12/2024
-              </div>
-              <div className="flex justify-between items-center mt-1">
-                <span className="font-semibold text-gray-800">$65</span>
-                <Megaphone className="w-4 h-4 text-[#805CF7]" />
-              </div>
-            </div>
+              title={ad.title}
+              thumbnail={ad.thumbnail}
+              price={ad.price}
+              goLiveDate={ad.goLiveDate}
+            />
           ))}
         </div>
       </div>
@@ -71,31 +81,14 @@ const Dashboard = () => {
           Ad spaces
         </span>
         <div className="mt-3 flex flex-col gap-3">
-          {[
-            { name: "Scanty Explore", price: 50, tag: "SE" },
-            { name: "Abby’s Kitchen", price: 42, tag: "AK" },
-          ].map((creator, i) => (
-            <div
+          {creators.map((creator, i) => (
+            <AdSpaceCard
               key={i}
-              className="bg-white shadow-sm border rounded-lg p-3 flex justify-between items-center"
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-green-200 rounded-md" />
-                <div>
-                  <div className="font-semibold">{creator.name}</div>
-                  <div className="text-xs text-gray-500">
-                    {creator.tag} <span className="ml-1">🎥</span>
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-xs text-gray-500">Price</div>
-                <div className="text-[#805CF7] font-bold">${creator.price}</div>
-                <button className="mt-1 px-3 py-1 text-white bg-[#805CF7] rounded-md text-xs">
-                  Sponsor
-                </button>
-              </div>
-            </div>
+              name={creator.name}
+              price={creator.price}
+              tag={creator.tag}
+              onSponsor={() => console.log(`Sponsored ${creator.name}`)}
+            />
           ))}
         </div>
       </div>
