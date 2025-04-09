@@ -15,26 +15,26 @@ export function meta({}: Route.MetaArgs) {
 const filters = ["All", "Top creators", "Niche", "Platforms", "Ad type"];
 const adData = [
   {
-    title: "This must stop!!!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "Bants, Rants and conffessions",
+    thumbnail: "https://afripods-data.s3.amazonaws.com/podcast/cover_image/c0511a3c9b98015ef7bd429c82709004aecab7a4209e935985ab894cf8b63252.jpeg",
     price: 65,
     goLiveDate: "20/12/2024",
   },
   {
-    title: "This must stop!!!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "Yawa of the day",
+    thumbnail: "https://www.kwadwosheldonstudios.com/img/use/logos/shows/YOD-08.png",
     price: 65,
     goLiveDate: "20/12/2024",
   },
   {
-    title: "This must stop!!!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "The Break Down - Where them boys dey",
+    thumbnail: "https://yt3.googleusercontent.com/dXI1qoj7N0LialqRmWvDy0YawrrkMy20CIIEuyHpINvSCHCgGstVnSPBNIzw8vj_y8hqWhLWzEs=s900-c-k-c0x00ffffff-no-rj",
     price: 65,
     goLiveDate: "20/12/2024",
   },
   {
-    title: "Clean up your digital space!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "Evo - Pilot premier",
+    thumbnail: "https://sparkmag.live/wp-content/uploads/2024/04/evor.jpg",
     price: 80,
     goLiveDate: "25/12/2024",
   },

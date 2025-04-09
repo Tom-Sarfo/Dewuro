@@ -1,4 +1,4 @@
-import { Megaphone } from "lucide-react";
+import MegaPhoneIcon from "~/svg/MegaPhone";
 
 interface AdCardProps {
   readonly title: string;
@@ -20,11 +20,13 @@ export default function AdCard({
         alt="Ad Thumbnail"
         className="w-full h-24 object-cover rounded-md"
       />
-      <div className="mt-2 font-medium">{title}</div>
-      <div className="text-red-500 text-xs">Going live - {goLiveDate}</div>
-      <div className="flex justify-between items-center mt-1">
-        <span className="font-semibold text-gray-800">${price}</span>
-        <Megaphone className="w-4 h-4 text-[#805CF7]" />
+      <div className="">
+        <div className="mt-2 font-medium">{title}</div>
+        <div className="text-red-500 text-xs">Going live - {goLiveDate}</div>
+        <div className="flex justify-between items-center mt-1">
+          <span className="font-semibold text-gray-800">${price}</span>
+          <MegaPhoneIcon className="w-4 h-4" />
+        </div>
       </div>
     </div>
   );
