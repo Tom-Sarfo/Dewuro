@@ -15,33 +15,39 @@ export function meta({}: Route.MetaArgs) {
 const filters = ["All", "Top creators", "Niche", "Platforms", "Ad type"];
 const adData = [
   {
-    title: "This must stop!!!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "Bants, Rants and conffessions",
+    thumbnail: "https://afripods-data.s3.amazonaws.com/podcast/cover_image/c0511a3c9b98015ef7bd429c82709004aecab7a4209e935985ab894cf8b63252.jpeg",
     price: 65,
     goLiveDate: "20/12/2024",
   },
   {
-    title: "This must stop!!!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "Yawa of the day",
+    thumbnail: "https://www.kwadwosheldonstudios.com/img/use/logos/shows/YOD-08.png",
     price: 65,
     goLiveDate: "20/12/2024",
   },
   {
-    title: "This must stop!!!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "The Break Down - Where them boys dey",
+    thumbnail: "https://yt3.googleusercontent.com/dXI1qoj7N0LialqRmWvDy0YawrrkMy20CIIEuyHpINvSCHCgGstVnSPBNIzw8vj_y8hqWhLWzEs=s900-c-k-c0x00ffffff-no-rj",
     price: 65,
     goLiveDate: "20/12/2024",
   },
   {
-    title: "Clean up your digital space!",
-    thumbnail: "/thumb-placeholder.jpg",
+    title: "Evo - Pilot premier",
+    thumbnail: "https://sparkmag.live/wp-content/uploads/2024/04/evor.jpg",
     price: 80,
     goLiveDate: "25/12/2024",
   },
 ];
 
 const creators = [
-  { name: "Scanty Explore", price: 50, tag: "SE" },
+  {
+    name: "Scanty Explore",
+    logoUrl:
+      "https://yt3.googleusercontent.com/nCxYgQWiq1wcN90FH14BgS066q_dNdWwhuM0oCLliNAV8XARlNcMXbi8qAZciwywkdCCsJfyMg=s900-c-k-c0x00ffffff-no-rj",
+    price: 50,
+    tag: "SE",
+  },
   { name: "Abby’s Kitchen", price: 42, tag: "AK" },
 ];
 
@@ -59,7 +65,7 @@ const Dashboard = () => {
 
       {/* Going Live Section */}
       <div className="px-4">
-        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 rounded-full">
+        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 font-bold rounded-full">
           Going live
         </span>
         <div className="grid grid-cols-2 gap-4 mt-3">
@@ -77,7 +83,7 @@ const Dashboard = () => {
 
       {/* Ad Spaces */}
       <div className="px-4 mt-6">
-        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 rounded-full">
+        <span className="bg-[#805CF7] text-white text-xs font-bold px-2 py-1 rounded-full">
           Ad spaces
         </span>
         <div className="mt-3 flex flex-col gap-3">
@@ -86,6 +92,7 @@ const Dashboard = () => {
               key={i}
               name={creator.name}
               price={creator.price}
+              logoUrl={creator.logoUrl}
               tag={creator.tag}
               onSponsor={() => console.log(`Sponsored ${creator.name}`)}
             />

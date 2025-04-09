@@ -24,10 +24,10 @@ export default function FilterChips({
         <span
           key={i}
           onClick={() => handleClick(item)}
-          className={`px-3 py-1 rounded-full cursor-pointer transition-colors ${
+          className={`px-3 py-1 rounded-full cursor-pointer font-semibold transition-colors ${
             item === active
-              ? "bg-[#805CF7] text-white"
-              : "bg-gray-100 text-gray-600"
+              ? "bg-[#7655FA] text-white"
+              : "text-[#7655FA] border border-[#D9D9D9]"
           }`}
         >
           {item}
