@@ -1,4 +1,5 @@
-import { Youtube } from "lucide-react";
+import Thumbnail from "~/svg/Thumbnail";
+import YouTubeIcon from "~/svg/YouTubeIcon";
 
 interface AdSpaceCardProps {
   readonly name: string;
@@ -18,23 +19,23 @@ export default function AdSpaceCard({
   onSponsor,
 }: AdSpaceCardProps) {
   return (
-    <div className="bg-gray-50 rounded-lg px-2 py-2 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm w-full">
+    <div className="bg-[#EFEDED] rounded-[5px] px-2 py-2 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm w-full">
       {/* Left: Logo + Name */}
       <div className="flex items-center gap-2 flex-1 min-w-[100px]">
         {logoUrl ? (
           <img
             src={logoUrl}
             alt={name}
-            className="w-9 h-9 sm:w-10 sm:h-10 object-cover rounded-md"
+            className="w-[56px] h-[56px] sm:w-10 sm:h-10 object-cover"
           />
         ) : (
-          <div className="w-9 h-9 sm:w-10 sm:h-10 bg-green-400 rounded-md" />
+          <Thumbnail className="w-[56px] h-[56px] sm:w-10 sm:h-10 object-cover" />
         )}
         <div className="text-xs sm:text-sm">
           <div className="font-semibold">{name}</div>
           <div className="flex items-center gap-1 text-[11px] text-gray-600">
             {tag}
-            <Youtube className="w-3.5 h-3.5 text-red-500" />
+            <YouTubeIcon className="w-3.5 h-3.5" />
           </div>
         </div>
       </div>

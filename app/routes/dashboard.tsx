@@ -41,7 +41,13 @@ const adData = [
 ];
 
 const creators = [
-  { name: "Scanty Explore", price: 50, tag: "SE" },
+  {
+    name: "Scanty Explore",
+    logoUrl:
+      "https://yt3.googleusercontent.com/nCxYgQWiq1wcN90FH14BgS066q_dNdWwhuM0oCLliNAV8XARlNcMXbi8qAZciwywkdCCsJfyMg=s900-c-k-c0x00ffffff-no-rj",
+    price: 50,
+    tag: "SE",
+  },
   { name: "Abby’s Kitchen", price: 42, tag: "AK" },
 ];
 
@@ -59,7 +65,7 @@ const Dashboard = () => {
 
       {/* Going Live Section */}
       <div className="px-4">
-        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 rounded-full">
+        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 font-bold rounded-full">
           Going live
         </span>
         <div className="grid grid-cols-2 gap-4 mt-3">
@@ -77,7 +83,7 @@ const Dashboard = () => {
 
       {/* Ad Spaces */}
       <div className="px-4 mt-6">
-        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 rounded-full">
+        <span className="bg-[#805CF7] text-white text-xs font-bold px-2 py-1 rounded-full">
           Ad spaces
         </span>
         <div className="mt-3 flex flex-col gap-3">
@@ -86,6 +92,7 @@ const Dashboard = () => {
               key={i}
               name={creator.name}
               price={creator.price}
+              logoUrl={creator.logoUrl}
               tag={creator.tag}
               onSponsor={() => console.log(`Sponsored ${creator.name}`)}
             />
