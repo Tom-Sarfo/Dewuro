@@ -19,46 +19,46 @@ export default function AdSpaceCard({
   onSponsor,
 }: AdSpaceCardProps) {
   return (
-    <div className="bg-[#EFEDED] rounded-[5px] px-2 py-2 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 shadow-sm w-full">
+    <div className="bg-[#EFEDED] rounded-[5px] px-2 py-2 flex items-center justify-between gap-2 shadow-sm w-full max-w-full">
       {/* Left: Logo + Name */}
-      <div className="flex items-center gap-2 flex-1 min-w-[100px]">
+      <div className="flex items-center gap-2 flex-1 min-w-0">
         {logoUrl ? (
           <img
             src={logoUrl}
             alt={name}
-            className="w-[56px] h-[56px] sm:w-10 sm:h-10 object-cover"
+            className="w-10 h-10 sm:w-[56px] sm:h-[56px] object-cover shrink-0"
           />
         ) : (
-          <Thumbnail className="w-[56px] h-[56px] sm:w-10 sm:h-10 object-cover" />
+          <Thumbnail className="w-10 h-10 sm:w-[56px] sm:h-[56px] object-cover shrink-0" />
         )}
-        <div className="text-xs sm:text-sm">
-          <div className="font-semibold">{name}</div>
-          <div className="flex items-center gap-1 text-[11px] text-gray-600">
+        <div className="flex flex-col text-[11px] sm:text-sm min-w-0">
+          <div className="font-semibold break-words leading-tight">{name}</div>
+          <div className="flex items-center gap-1 text-[10px] text-gray-600">
             {tag}
-            <YouTubeIcon className="w-3.5 h-3.5" />
+            <YouTubeIcon className="w-3 h-3" />
           </div>
         </div>
       </div>
 
-      {/* Middle: Price */}
-      <div className="text-xs sm:text-sm text-center min-w-[60px]">
+      {/* Price */}
+      <div className="text-[11px] sm:text-sm text-center min-w-[50px]">
         <div className="font-semibold">Price</div>
-        <div className="text-[#805CF7] font-bold text-sm sm:text-base">
+        <div className="text-[#805CF7] font-bold text-xs sm:text-base">
           ${price}
         </div>
       </div>
 
-      {/* Middle: Ad Type */}
-      <div className="text-xs sm:text-sm text-center min-w-[70px]">
+      {/* Ad Type */}
+      <div className="text-[11px] sm:text-sm text-center min-w-[60px]">
         <div className="font-semibold">Ad type</div>
         <div className="text-gray-400 italic">{adType}</div>
       </div>
 
-      {/* Right: Button */}
-      <div className="min-w-[80px]">
+      {/* Button */}
+      <div className="min-w-[70px]">
         <button
           onClick={onSponsor}
-          className="bg-[#805CF7] text-white text-xs sm:text-sm px-3 py-[6px] rounded-md font-semibold w-full"
+          className="bg-[#805CF7] text-white text-[10px] sm:text-sm px-2 py-[5px] rounded-md font-semibold w-full"
         >
           Sponsor
         </button>
