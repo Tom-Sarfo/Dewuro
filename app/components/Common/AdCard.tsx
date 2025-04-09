@@ -25,7 +25,7 @@ export default function AdCard({
         <div className="text-red-500 text-xs">Going live - {goLiveDate}</div>
         <div className="flex justify-between items-center mt-1">
           <span className="font-semibold text-gray-800">${price}</span>
-          <MegaPhoneIcon className="w-4 h-4" />
+          <MegaPhoneIcon className="w-6 h-6" />
         </div>
       </div>
     </div>
