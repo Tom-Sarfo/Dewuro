@@ -9,7 +9,7 @@ export default function SearchInput({ ...props }: SearchInputProps) {
       <SearchIcon className=" text-gray-500" />
       <input
         type="text"
-        className="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-500 focus:outline-none"
+        className="flex-1 bg-transparent text-[16px] text-gray-700 placeholder-gray-500 focus:outline-none"
         {...props}
       />
     </div>
