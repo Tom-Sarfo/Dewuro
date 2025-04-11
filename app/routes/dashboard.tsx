@@ -1,66 +1,24 @@
-import { Filter, Megaphone } from "lucide-react";
-import type { Route } from "./+types/home";
+import { useState } from "react";
 import SearchInput from "~/components/Common/SearchInput";
 import FilterChips from "~/components/Common/FilterChips";
 import AdCard from "~/components/Common/AdCard";
 import AdSpaceCard from "~/components/Common/AdSpaceCard";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
-
-const filters = ["All", "Top creators", "Niche", "Platforms", "Ad type"];
-const adData = [
-  {
-    title: "Bants, Rants and conffessions",
-    thumbnail:
-      "https://afripods-data.s3.amazonaws.com/podcast/cover_image/c0511a3c9b98015ef7bd429c82709004aecab7a4209e935985ab894cf8b63252.jpeg",
-    price: 65,
-    goLiveDate: "20/12/2024",
-  },
-  {
-    title: "Yawa of the day",
-    thumbnail:
-      "https://www.kwadwosheldonstudios.com/img/use/logos/shows/YOD-08.png",
-    price: 65,
-    goLiveDate: "20/12/2024",
-  },
-  {
-    title: "The Break Down - Where them boys dey",
-    thumbnail:
-      "https://yt3.googleusercontent.com/dXI1qoj7N0LialqRmWvDy0YawrrkMy20CIIEuyHpINvSCHCgGstVnSPBNIzw8vj_y8hqWhLWzEs=s900-c-k-c0x00ffffff-no-rj",
-    price: 65,
-    goLiveDate: "20/12/2024",
-  },
-  {
-    title: "Evo - Pilot premier",
-    thumbnail: "https://sparkmag.live/wp-content/uploads/2024/04/evor.jpg",
-    price: 80,
-    goLiveDate: "25/12/2024",
-  },
-];
-
-const creators = [
-  {
-    name: "Scanty Explore",
-    logoUrl:
-      "https://yt3.googleusercontent.com/nCxYgQWiq1wcN90FH14BgS066q_dNdWwhuM0oCLliNAV8XARlNcMXbi8qAZciwywkdCCsJfyMg=s900-c-k-c0x00ffffff-no-rj",
-    price: 50,
-    tag: "SE",
-  },
-  {
-    name: "Abby’s Kitchen",
-    logoUrl:
-      "https://static.wixstatic.com/media/b1059f_6c0bb4a21e524c25a3f39c72d57b9d3a~mv2.jpg/v1/fit/w_2500,h_1330,al_c/b1059f_6c0bb4a21e524c25a3f39c72d57b9d3a~mv2.jpg",
-    price: 42,
-    tag: "AK",
-  },
-];
+import NicheFilters from "~/components/Common/NicheFilters";
+import { adData, creators, filters } from "~/utils";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Dashboard = () => {
+  const [selectedFilter, setSelectedFilter] = useState("All");
+
+  const handleFilterChange = (filter: string) => {
+    // Toggle off if the same filter is clicked
+    if (filter === selectedFilter) {
+      setSelectedFilter("All");
+    } else {
+      setSelectedFilter(filter);
+    }
+  };
+
   return (
     <>
       {/* Title + Search + Filters */}
@@ -71,8 +29,25 @@ const Dashboard = () => {
         <SearchInput placeholder="Search Ad space to sponsor" />
         <FilterChips
           filters={filters}
-          onChange={(selected) => console.log("Selected filter:", selected)}
+          defaultActive={selectedFilter}
+          onChange={handleFilterChange}
         />
+
+        {/* Show niche options if 'Niche' is selected */}
+        <AnimatePresence>
+          {selectedFilter === "Niche" && (
+            <motion.div
+              key="niche-filters"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden mt-4"
+            >
+              <NicheFilters />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Going Live Section */}

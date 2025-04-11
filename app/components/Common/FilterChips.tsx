@@ -14,8 +14,14 @@ export default function FilterChips({
   const [active, setActive] = useState(defaultActive);
 
   const handleClick = (filter: string) => {
-    setActive(filter);
-    onChange?.(filter);
+    if (filter === active) {
+      // Toggle off if clicking the same active filter
+      setActive("All");
+      onChange?.("All");
+    } else {
+      setActive(filter);
+      onChange?.(filter);
+    }
   };
 
   return (
