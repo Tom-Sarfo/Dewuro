@@ -51,7 +51,13 @@ const creators = [
     price: 50,
     tag: "SE",
   },
-  { name: "Abby’s Kitchen", price: 42, tag: "AK" },
+  {
+    name: "Abby’s Kitchen",
+    logoUrl:
+      "https://static.wixstatic.com/media/b1059f_6c0bb4a21e524c25a3f39c72d57b9d3a~mv2.jpg/v1/fit/w_2500,h_1330,al_c/b1059f_6c0bb4a21e524c25a3f39c72d57b9d3a~mv2.jpg",
+    price: 42,
+    tag: "AK",
+  },
 ];
 
 const Dashboard = () => {
