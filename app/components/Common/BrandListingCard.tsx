@@ -34,7 +34,7 @@ export const BrandListingCard: React.FC<BrandListingCardProps> = ({
           </div>
         </div>
       </div>
-      <button className="px-4 py-1 text-xs rounded-md bg-[#805CF7] text-white hover:bg-[#6847e3]">
+      <button className="px-4 py-1 text-xs rounded-md bg-[#7655FA] text-white hover:bg-[#6847e3]">
         View
       </button>
     </div>
