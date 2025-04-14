@@ -1,85 +1,60 @@
-import { Filter, Megaphone } from "lucide-react";
-import type { Route } from "./+types/home";
+import { useState } from "react";
+import { Drawer } from "vaul";
+
 import SearchInput from "~/components/Common/SearchInput";
-import FilterChips from "~/components/Common/FilterChips";
 import AdCard from "~/components/Common/AdCard";
 import AdSpaceCard from "~/components/Common/AdSpaceCard";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
-
-const filters = ["All", "Top creators", "Niche", "Platforms", "Ad type"];
-const adData = [
-  {
-    title: "Bants, Rants and conffessions",
-    thumbnail:
-      "https://afripods-data.s3.amazonaws.com/podcast/cover_image/c0511a3c9b98015ef7bd429c82709004aecab7a4209e935985ab894cf8b63252.jpeg",
-    price: 65,
-    goLiveDate: "20/12/2024",
-  },
-  {
-    title: "Yawa of the day",
-    thumbnail:
-      "https://www.kwadwosheldonstudios.com/img/use/logos/shows/YOD-08.png",
-    price: 65,
-    goLiveDate: "20/12/2024",
-  },
-  {
-    title: "The Break Down - Where them boys dey",
-    thumbnail:
-      "https://yt3.googleusercontent.com/dXI1qoj7N0LialqRmWvDy0YawrrkMy20CIIEuyHpINvSCHCgGstVnSPBNIzw8vj_y8hqWhLWzEs=s900-c-k-c0x00ffffff-no-rj",
-    price: 65,
-    goLiveDate: "20/12/2024",
-  },
-  {
-    title: "Evo - Pilot premier",
-    thumbnail: "https://sparkmag.live/wp-content/uploads/2024/04/evor.jpg",
-    price: 80,
-    goLiveDate: "25/12/2024",
-  },
-];
-
-const creators = [
-  {
-    name: "Scanty Explore",
-    logoUrl:
-      "https://yt3.googleusercontent.com/nCxYgQWiq1wcN90FH14BgS066q_dNdWwhuM0oCLliNAV8XARlNcMXbi8qAZciwywkdCCsJfyMg=s900-c-k-c0x00ffffff-no-rj",
-    price: 50,
-    tag: "SE",
-  },
-  {
-    name: "Abby’s Kitchen",
-    logoUrl:
-      "https://static.wixstatic.com/media/b1059f_6c0bb4a21e524c25a3f39c72d57b9d3a~mv2.jpg/v1/fit/w_2500,h_1330,al_c/b1059f_6c0bb4a21e524c25a3f39c72d57b9d3a~mv2.jpg",
-    price: 42,
-    tag: "AK",
-  },
-];
+import {
+  adData,
+  creatorFilters,
+  creators,
+  nicheFilters,
+  platformFilters,
+} from "~/utils";
+import FiltersIcon from "~/svg/Filters";
+import FilterGroup from "~/components/FilterGroup";
 
 const Dashboard = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [selectedNiche, setSelectedNiche] = useState<string[]>([]);
+  const [selectedPlatform, setSelectedPlatform] = useState<string[]>([]);
+  const [selectedCreator, setSelectedCreator] = useState<string[]>([]);
+
+  const handleApplyFilters = () => {
+    console.log("Applied Filters:", {
+      niche: selectedNiche,
+      platform: selectedPlatform,
+      creator: selectedCreator,
+    });
+
+    setIsDrawerOpen(false);
+  };
+
   return (
     <>
-      {/* Title + Search + Filters */}
+      {/* Header + Filters button */}
       <div className="px-4 py-3">
         <h1 className="text-xl font-semibold mt-4 text-left py-2">
           Ad Space Market
         </h1>
         <SearchInput placeholder="Search Ad space to sponsor" />
-        <FilterChips
-          filters={filters}
-          onChange={(selected) => console.log("Selected filter:", selected)}
-        />
       </div>
 
       {/* Going Live Section */}
       <div className="px-4">
-        <span className="bg-[#805CF7] text-white text-xs px-2 py-1 font-bold rounded-full">
-          Going live
-        </span>
+        <div className="flex items-center justify-between">
+          <span className="bg-[#805CF7] text-white text-xs px-2 py-1 font-bold rounded-full">
+            Going live
+          </span>
+          <button
+            className="bg-white text-[#7655FA] border border-[#7655FA] px-4 py-1 rounded-full text-sm flex items-center gap-2"
+            onClick={() => setIsDrawerOpen(true)}
+          >
+            Filters
+            <FiltersIcon className="w-4 h-4 text-[#7655FA]" />
+          </button>
+        </div>
+
         <div className="grid grid-cols-2 gap-4 mt-3">
           {adData.map((ad, i) => (
             <AdCard
@@ -111,6 +86,50 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
+
+      {/* Bottom Drawer for Filters */}
+      <Drawer.Root open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+        <Drawer.Portal>
+          <Drawer.Overlay className="fixed inset-0 bg-black/40 z-40" />
+          <Drawer.Content className="fixed inset-x-0 bottom-0 bg-white rounded-t-2xl z-50">
+            <div className="max-h-[100vh] overflow-y-auto px-4 pt-5 pb-6">
+              <div className="w-full max-w-md mx-auto">
+                <div className="h-1.5 w-12 bg-gray-300 rounded-full mx-auto mb-5" />
+
+                {/* Filter Groups */}
+                <FilterGroup
+                  title="Niche Filters"
+                  options={nicheFilters}
+                  selected={selectedNiche}
+                  setSelected={setSelectedNiche}
+                />
+                <FilterGroup
+                  title="Platform Filters"
+                  options={platformFilters}
+                  selected={selectedPlatform}
+                  setSelected={setSelectedPlatform}
+                />
+                <FilterGroup
+                  title="Top Creators"
+                  options={creatorFilters}
+                  selected={selectedCreator}
+                  setSelected={setSelectedCreator}
+                />
+
+                {/* Apply Button */}
+                <div className="sticky bottom-0 bg-white pt-6 pb-4">
+                  <button
+                    onClick={handleApplyFilters}
+                    className="w-full bg-[#805CF7] text-white py-3 rounded-full"
+                  >
+                    Apply Filters
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Drawer.Content>
+        </Drawer.Portal>
+      </Drawer.Root>
     </>
   );
 };
