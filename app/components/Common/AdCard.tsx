@@ -1,3 +1,4 @@
+import AuctionIcon from "~/svg/Auction";
 import MegaPhoneIcon from "~/svg/MegaPhone";
 
 interface AdCardProps {
@@ -25,7 +26,7 @@ export default function AdCard({
         <div className="text-red-500 text-xs">Going live - {goLiveDate}</div>
         <div className="flex justify-between items-center mt-1">
           <span className="font-semibold text-gray-800">${price}</span>
-          <MegaPhoneIcon className="w-6 h-6" />
+          <AuctionIcon className="w-6 h-6" />
         </div>
       </div>
     </div>
