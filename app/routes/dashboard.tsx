@@ -4,36 +4,21 @@ import { Drawer } from "vaul";
 import SearchInput from "~/components/Common/SearchInput";
 import AdCard from "~/components/Common/AdCard";
 import AdSpaceCard from "~/components/Common/AdSpaceCard";
-import { adData, creators } from "~/utils";
-import YouTubeIcon from "~/svg/YouTubeIcon";
-import TiktokIcon from "~/svg/TiktokIcon";
-import SnapchatIcon from "~/svg/SnapchatIcon";
-import XtwitterIcon from "~/svg/XtwitterIcon";
-import FoodIcon from "~/svg/FoodIcon";
-import TechnologyIcon from "~/svg/TechnologyIcon";
-import ShirtIcon from "~/svg/ShirtIcon";
-import TelevisionIcon from "~/svg/TelevisionIcon";
-import ArtIcon from "~/svg/Art";
-import OthersIcon from "~/svg/OthersIcon";
+import {
+  adData,
+  creatorFilters,
+  creators,
+  nicheFilters,
+  platformFilters,
+} from "~/utils";
 import FiltersIcon from "~/svg/Filters";
+import FilterGroup from "~/components/FilterGroup";
 
 const Dashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedNiche, setSelectedNiche] = useState<string[]>([]);
   const [selectedPlatform, setSelectedPlatform] = useState<string[]>([]);
   const [selectedCreator, setSelectedCreator] = useState<string[]>([]);
-
-  const handleToggle = (
-    value: string,
-    selected: string[],
-    setSelected: (val: string[]) => void
-  ) => {
-    if (selected.includes(value)) {
-      setSelected(selected.filter((item) => item !== value));
-    } else {
-      setSelected([...selected, value]);
-    }
-  };
 
   const handleApplyFilters = () => {
     console.log("Applied Filters:", {
@@ -44,63 +29,6 @@ const Dashboard = () => {
 
     setIsDrawerOpen(false);
   };
-
-  const nicheFilters = [
-    { label: "Food", icon: FoodIcon },
-    { label: "Fashion", icon: ShirtIcon },
-    { label: "Technology", icon: TechnologyIcon },
-    { label: "Entertainment", icon: TelevisionIcon },
-    { label: "Art", icon: ArtIcon },
-    { label: "Others", icon: OthersIcon },
-  ];
-
-  const platformFilters = [
-    { label: "YouTube", icon: YouTubeIcon },
-    { label: "TikTok", icon: TiktokIcon },
-    { label: "SnapChat", icon: SnapchatIcon },
-    { label: "X (twitter)", icon: XtwitterIcon },
-  ];
-
-  const creatorFilters = [
-    "Mega/Celebrity - score (96-100)",
-    "Macro  -  score (81 - 95)",
-    "Mid-Tier  - score (61 - 80)",
-    "Micro  -  score (31 - 60)",
-    "Nano  -  score (0 - 30)",
-  ];
-
-  const renderFilterGroup = (
-    title: string,
-    options: (string | { label: string; icon: React.ElementType })[],
-    selected: string[],
-    setSelected: (val: string[]) => void
-  ) => (
-    <div className="mb-6">
-      <h3 className="font-semibold mb-2">{title}</h3>
-      <div className="space-y-2">
-        {options.map((opt, i) => {
-          const label = typeof opt === "string" ? opt : opt.label;
-          const Icon = typeof opt === "string" ? null : opt.icon;
-          const isSelected = selected.includes(label);
-
-          return (
-            <div
-              key={i}
-              onClick={() => handleToggle(label, selected, setSelected)}
-              className={`flex items-center gap-3 cursor-pointer p-2 rounded-md ${
-                isSelected ? "bg-[#ECE8FD] text-[#805CF7]" : "hover:bg-gray-100"
-              }`}
-            >
-              {Icon && <Icon className="w-4 h-4 text-[#805CF7]" />}
-              <span className="text-sm font-medium text-[#A9AAAA]">
-                {label}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -169,24 +97,24 @@ const Dashboard = () => {
                 <div className="h-1.5 w-12 bg-gray-300 rounded-full mx-auto mb-5" />
 
                 {/* Filter Groups */}
-                {renderFilterGroup(
-                  "Niche Filters",
-                  nicheFilters,
-                  selectedNiche,
-                  setSelectedNiche
-                )}
-                {renderFilterGroup(
-                  "Platform Filters",
-                  platformFilters,
-                  selectedPlatform,
-                  setSelectedPlatform
-                )}
-                {renderFilterGroup(
-                  "Top Creators",
-                  creatorFilters,
-                  selectedCreator,
-                  setSelectedCreator
-                )}
+                <FilterGroup
+                  title="Niche Filters"
+                  options={nicheFilters}
+                  selected={selectedNiche}
+                  setSelected={setSelectedNiche}
+                />
+                <FilterGroup
+                  title="Platform Filters"
+                  options={platformFilters}
+                  selected={selectedPlatform}
+                  setSelected={setSelectedPlatform}
+                />
+                <FilterGroup
+                  title="Top Creators"
+                  options={creatorFilters}
+                  selected={selectedCreator}
+                  setSelected={setSelectedCreator}
+                />
 
                 {/* Apply Button */}
                 <div className="sticky bottom-0 bg-white pt-6 pb-4">

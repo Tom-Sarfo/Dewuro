@@ -1,3 +1,14 @@
+import ArtIcon from "./svg/Art";
+import FoodIcon from "./svg/FoodIcon";
+import OthersIcon from "./svg/OthersIcon";
+import ShirtIcon from "./svg/ShirtIcon";
+import SnapchatIcon from "./svg/SnapchatIcon";
+import TechnologyIcon from "./svg/TechnologyIcon";
+import TelevisionIcon from "./svg/TelevisionIcon";
+import TiktokIcon from "./svg/TiktokIcon";
+import XtwitterIcon from "./svg/XtwitterIcon";
+import YouTubeIcon from "./svg/YouTubeIcon";
+
 export const filters = ["All", "Top Creators", "Niche", "Platform", "Ad type"];
 export const adData = [
   {
@@ -44,4 +55,28 @@ export const creators = [
     price: 42,
     tag: "AK",
   },
+];
+
+export const nicheFilters = [
+  { label: "Food", icon: FoodIcon },
+  { label: "Fashion", icon: ShirtIcon },
+  { label: "Technology", icon: TechnologyIcon },
+  { label: "Entertainment", icon: TelevisionIcon },
+  { label: "Art", icon: ArtIcon },
+  { label: "Others", icon: OthersIcon },
+];
+
+export const platformFilters = [
+  { label: "YouTube", icon: YouTubeIcon },
+  { label: "TikTok", icon: TiktokIcon },
+  { label: "SnapChat", icon: SnapchatIcon },
+  { label: "X (twitter)", icon: XtwitterIcon },
+];
+
+export const creatorFilters = [
+  "Mega/Celebrity - score (96-100)",
+  "Macro  -  score (81 - 95)",
+  "Mid-Tier  - score (61 - 80)",
+  "Micro  -  score (31 - 60)",
+  "Nano  -  score (0 - 30)",
 ];
