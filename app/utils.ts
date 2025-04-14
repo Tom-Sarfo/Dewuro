@@ -80,3 +80,29 @@ export const creatorFilters = [
   "Micro  -  score (31 - 60)",
   "Nano  -  score (0 - 30)",
 ];
+
+export const adListings = [
+  {
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjeVdsvELOFki1dcywiYrEFOLa5RAOPFKUsA&s",
+    brand: "CM",
+    title: "Promote our new Black Volta watch on YouTube",
+    type: "CM",
+    typeDescription: "Commission-based",
+  },
+  {
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU-3sgmIVsAMcln0VKsrACNUZpXtpekkLOmw&s",
+    brand: "TTD",
+    title: "Share our promo flyer on Instagram",
+    type: "TTD",
+    typeDescription: "Performance-based",
+  },
+  {
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFw9ieXgqm_4hK-DXefY46ilYkfCPlRnOBnQ&s",
+    brand: "TTD",
+    title:
+      "We need 5 creators from different platforms to promote our African design",
+    type: "TTD",
+    typeDescription: "Collaborative",
+  },
+  // Repeat if needed
+];

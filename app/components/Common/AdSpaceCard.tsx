@@ -43,7 +43,7 @@ export default function AdSpaceCard({
       {/* Price */}
       <div className="text-[11px] sm:text-sm text-center min-w-[50px]">
         <div className="font-semibold">Price</div>
-        <div className="text-[#805CF7] font-bold text-xs sm:text-base">
+        <div className="text-[#7655FA] font-bold text-xs sm:text-base">
           ${price}
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function AdSpaceCard({
       <div className="min-w-[70px]">
         <button
           onClick={onSponsor}
-          className="bg-[#805CF7] text-white text-[10px] sm:text-sm px-2 py-[5px] rounded-md font-semibold w-full"
+          className="bg-[#7655FA] text-white text-[10px] sm:text-sm px-2 py-[5px] rounded-md font-semibold w-full"
         >
           Sponsor
         </button>
