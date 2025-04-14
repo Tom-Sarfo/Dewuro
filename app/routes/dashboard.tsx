@@ -6,6 +6,7 @@ import AdCard from "~/components/Common/AdCard";
 import AdSpaceCard from "~/components/Common/AdSpaceCard";
 import {
   adData,
+  adListings,
   creatorFilters,
   creators,
   nicheFilters,
@@ -13,6 +14,7 @@ import {
 } from "~/utils";
 import FiltersIcon from "~/svg/Filters";
 import FilterGroup from "~/components/FilterGroup";
+import { BrandListingCard } from "~/components/Common/BrandListingCard";
 
 const Dashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -84,6 +86,17 @@ const Dashboard = () => {
               onSponsor={() => console.log(`Sponsored ${creator.name}`)}
             />
           ))}
+        </div>
+        {/* Brand Listings */}
+        <div className="mt-6">
+          <span className="bg-[#805CF7] text-white text-xs font-bold px-2 py-1 rounded-full">
+            Brand Ad Listings
+          </span>
+          <div className="mt-3">
+            {adListings.map((listing, index) => (
+              <BrandListingCard key={index} {...listing} />
+            ))}
+          </div>
         </div>
       </div>
 
