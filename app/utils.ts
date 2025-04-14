@@ -1,4 +1,4 @@
-export const filters = ["All", "Top creators", "Niche", "Platforms", "Ad type"];
+export const filters = ["All", "Top Creators", "Niche", "Platform", "Ad type"];
 export const adData = [
   {
     title: "Bants, Rants and conffessions",
