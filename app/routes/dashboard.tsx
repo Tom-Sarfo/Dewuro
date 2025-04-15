@@ -15,6 +15,7 @@ import {
 import FiltersIcon from "~/svg/Filters";
 import FilterGroup from "~/components/FilterGroup";
 import { BrandListingCard } from "~/components/Common/BrandListingCard";
+import DewuroLogo from "~/svg/DewuroLogo";
 
 const Dashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
