@@ -9,8 +9,8 @@ export default [
   layout("./routes/home.tsx", [
     index("./routes/dashboard.tsx"),
     route("goinglive", "./routes/AdDetailScreen.tsx", [
-      index("./routes/AdTypeUploadSection.tsx"),
-      route("details", "./routes/TabbedContent.tsx"),
+      index("./components/AdTypeUploadSection.tsx"),
+      route("details", "./routes/GoLiveDetails.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig;

@@ -1,18 +1,10 @@
-import { useState } from "react";
+import { Button } from "../components/ui/button";
 import { BadgeCheck } from "lucide-react";
-import { Button } from "~/components/ui/button";
-import AdTypeUploadSection from "~/routes/AdTypeUploadSection";
-import TabbedContent from "./TabbedContent";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 const AdDetailScreen = () => {
-  const [selectedType, setSelectedType] = useState<string>("mention");
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
-  console.log({ selectedType, setSelectedType });
-
-  
-
-  console.log("Parent selectedType:", selectedType);
+  const location = useLocation();
+  const isDetailsPage = location.pathname.includes("goinglive/details");
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -41,16 +33,7 @@ const AdDetailScreen = () => {
           <BadgeCheck className="w-4 h-4 text-[#805CF7]" />
         </div>
 
-        {/* Use extracted component */}
-
-        {/* <AdTypeUploadSection
-          selectedType={selectedType}
-          setSelectedType={setSelectedType}
-          uploadedFiles={uploadedFiles}
-          setUploadedFiles={setUploadedFiles}
-        /> */}
-        {/* <TabbedContent tabs={tabs} /> */}
-        <Outlet/>
+        <Outlet />
       </div>
 
       {/* Footer */}
@@ -60,10 +43,10 @@ const AdDetailScreen = () => {
           <p className="text-lg font-bold">$72</p>
         </div>
         <Link to="/goinglive/details">
-        <Button  className="bg-[#805CF7] text-white text-sm px-6 py-2 rounded-md">
-          Continue
-        </Button></Link>
-        
+          <Button className="bg-[#805CF7] text-white text-sm px-6 py-2 rounded-md">
+            {isDetailsPage ? "Place bid" : "Continue"}
+          </Button>
+        </Link>
       </div>
     </div>
   );

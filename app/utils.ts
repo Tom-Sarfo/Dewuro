@@ -106,3 +106,38 @@ export const adListings = [
   },
   // Repeat if needed
 ];
+
+ export const mockBids: { 
+  logo: string; 
+  name: string; 
+  acronym: string; 
+  bidAmount: number; 
+  time: string; 
+  status: "Outbid" | "Underbid"; 
+}[] = [
+    {
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFw9ieXgqm_4hK-DXefY46ilYkfCPlRnOBnQ&s",
+      name: "Lemfi",
+      acronym: "LP",
+      bidAmount: 72,
+      time: "now",
+      status: "Outbid",
+    },
+    {
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlGSYUQBwRDgaTRoWIDr-VydRQ9cT8XXopIQ&s",
+      name: "Miss Cookie",
+      acronym: "MC",
+      bidAmount: 54,
+      time: "5hrs ago",
+      status: "Underbid",
+    },
+    {
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjeVdsvELOFki1dcywiYrEFOLa5RAOPFKUsA&s",
+      name: "Tap tap send",
+      acronym: "TTS",
+      bidAmount: 50,
+      time: "6hrs ago",
+      status: "Underbid",
+    },
+  ];
+

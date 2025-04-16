@@ -1,21 +1,11 @@
-import React from "react";
-import { Mic, Image as ImageIcon } from "lucide-react";
+import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { Mic, Image as ImageIcon } from "lucide-react";
 
-interface AdTypeUploadSectionProps {
-  selectedType: string;
-  setSelectedType: React.Dispatch<React.SetStateAction<string>>;
-  uploadedFiles: File[];
-  setUploadedFiles: (files: File[]) => void;
-}
+const AdTypeUploadRoute = () => {
+  const [selectedType, setSelectedType] = useState("mention");
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 
-
-const AdTypeUploadSection: React.FC<AdTypeUploadSectionProps> = ({
-  selectedType,
-  setSelectedType,
-  uploadedFiles,
-  setUploadedFiles,
-}) => {
   const adTypes = [
     { type: "mention", icon: <Mic className="w-6 h-6" />, count: 5 },
     { type: "banner", icon: <ImageIcon className="w-6 h-6" />, count: 3 },
@@ -30,8 +20,7 @@ const AdTypeUploadSection: React.FC<AdTypeUploadSectionProps> = ({
       count: 10,
     },
   ];
-  console.log("setSelectedType: ", typeof selectedType);
-   
+
   const onDrop = (acceptedFiles: File[]) => {
     setUploadedFiles(acceptedFiles);
   };
@@ -39,7 +28,7 @@ const AdTypeUploadSection: React.FC<AdTypeUploadSectionProps> = ({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <>
+    <div className="p-4">
       {/* Ad Types */}
       <p className="text-sm font-medium mb-2">Select Ad type</p>
       <div className="flex gap-2 mb-4">
@@ -62,7 +51,7 @@ const AdTypeUploadSection: React.FC<AdTypeUploadSectionProps> = ({
         ))}
       </div>
 
-      {/* Upload section */}
+      {/* Upload Section */}
       <p className="text-sm font-medium mb-2">Upload Ad file (audio, image, etc)</p>
       <div
         {...getRootProps()}
@@ -71,16 +60,15 @@ const AdTypeUploadSection: React.FC<AdTypeUploadSectionProps> = ({
         <input {...getInputProps()} />
         {isDragActive ? <p>Drop the files here...</p> : <p>Drop file here</p>}
       </div>
-
-      {uploadedFiles?.length > 0 && (
+      {uploadedFiles.length > 0 && (
         <ul className="mt-2 text-sm text-gray-600">
           {uploadedFiles.map((file, index) => (
             <li key={index}>{file.name}</li>
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 
-export default AdTypeUploadSection;
+export default AdTypeUploadRoute;
