@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import { Button } from "../components/ui/button";
-import { BadgeCheck, Mic, Image as ImageIcon } from "lucide-react";
-import { useDropzone } from "react-dropzone";
+import { BadgeCheck } from "lucide-react";
 import { Link, Outlet } from "react-router";
 
 const AdDetailScreen = () => {
