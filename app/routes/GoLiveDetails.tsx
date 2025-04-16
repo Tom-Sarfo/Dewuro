@@ -1,4 +1,7 @@
+import BidRanking from "~/components/BidRanking";
 import DetailsTabs from "~/components/DetailsTabs";
+import { mockBids } from "~/utils";
+
 
 const tabItems = [
     {
@@ -13,14 +16,13 @@ const tabItems = [
     },
     {
       label: "Offers",
-      content: <p>No offers available at the moment.</p>,
+      content: <BidRanking bids={mockBids} />
     },
     {
       label: "Ad files",
-      content: <p>No ad files uploaded yet.</p>,
+      content: <p>No offers available at the moment.</p>,
     },
   ];
-
 function GoLiveDetails() {
   return <DetailsTabs tabs={tabItems}/>;
 }

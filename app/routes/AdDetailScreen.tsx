@@ -1,8 +1,11 @@
 import { Button } from "../components/ui/button";
 import { BadgeCheck } from "lucide-react";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 const AdDetailScreen = () => {
+  const location = useLocation();
+  const isDetailsPage = location.pathname.includes("goinglive/details");
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Banner */}
@@ -41,7 +44,7 @@ const AdDetailScreen = () => {
         </div>
         <Link to="/goinglive/details">
           <Button className="bg-[#805CF7] text-white text-sm px-6 py-2 rounded-md">
-            Continue
+            {isDetailsPage ? "Place bid" : "Continue"}
           </Button>
         </Link>
       </div>
