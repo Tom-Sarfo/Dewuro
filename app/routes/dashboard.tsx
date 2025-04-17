@@ -16,12 +16,19 @@ import FiltersIcon from "~/svg/Filters";
 import FilterGroup from "~/components/FilterGroup";
 import { BrandListingCard } from "~/components/Common/BrandListingCard";
 import DewuroLogo from "~/svg/DewuroLogo";
+import { useNavigate } from "react-router";
 
 const Dashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedNiche, setSelectedNiche] = useState<string[]>([]);
   const [selectedPlatform, setSelectedPlatform] = useState<string[]>([]);
   const [selectedCreator, setSelectedCreator] = useState<string[]>([]);
+
+  const navigate = useNavigate();
+
+  const handleSponsorClick = () => {
+    navigate(`/adspace-booking/`); // Replace with the actual route including creatorId
+  };
 
   const handleApplyFilters = () => {
     console.log("Applied Filters:", {
@@ -84,7 +91,7 @@ const Dashboard = () => {
               price={creator.price}
               logoUrl={creator.logoUrl}
               tag={creator.tag}
-              onSponsor={() => console.log(`Sponsored ${creator.name}`)}
+              onSponsor={handleSponsorClick}
             />
           ))}
         </div>
