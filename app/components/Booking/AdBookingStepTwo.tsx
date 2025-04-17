@@ -49,7 +49,7 @@ const AdBookingStepTwo: React.FC = () => {
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
           placeholder="Enter caption, hashtags, etc"
-          className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-gray-500"
+          className="w-full border border-gray-300 rounded-md px-4 text-[16px] py-2 focus:outline-none focus:border-gray-500"
         />
       </div>
     </div>
