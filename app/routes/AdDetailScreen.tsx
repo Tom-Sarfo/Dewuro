@@ -1,10 +1,19 @@
 import { Button } from "../components/ui/button";
 import { BadgeCheck } from "lucide-react";
+import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router";
+import PlaceBidModal  from "~/components/Common/PlacebidModal";
 
 const AdDetailScreen = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [highestBid, setHighestBid] = useState(72);
+
   const location = useLocation();
   const isDetailsPage = location.pathname.includes("goinglive/details");
+  const handleBidSubmit = (amount: number) => {
+    setHighestBid(amount);
+    // Optionally handle backend logic here
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -23,14 +32,14 @@ const AdDetailScreen = () => {
           <h2 className="text-lg font-semibold">New hosts and life lately</h2>
           <Button
             size="sm"
-            className="bg-[#E5E1FD] text-[#805CF7] rounded-full text-xs px-3 py-1.5"
+            className="bg-[#E5E1FD] text-[#7655FA] rounded-full text-xs px-3 py-1.5"
           >
             Chat now
           </Button>
         </div>
         <div className="flex items-center gap-1 text-sm text-gray-400 mb-4">
           <span>Bants, rants and confession.</span>
-          <BadgeCheck className="w-4 h-4 text-[#805CF7]" />
+          <BadgeCheck className="w-4 h-4 text-[#7655FA]" />
         </div>
 
         <Outlet />
@@ -43,11 +52,21 @@ const AdDetailScreen = () => {
           <p className="text-lg font-bold">$72</p>
         </div>
         <Link to="/goinglive/details">
-          <Button className="bg-[#805CF7] text-white text-sm px-6 py-2 rounded-md">
+          <Button
+            className="bg-[#7655FA] text-white text-sm px-6 py-2 rounded-md"
+            onClick={() => setIsModalOpen(isDetailsPage)}
+          >
             {isDetailsPage ? "Place bid" : "Continue"}
           </Button>
         </Link>
       </div>
+      {/* Modal */}
+      <PlaceBidModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        highestBid={highestBid}
+        onBidSubmit={handleBidSubmit}
+      />
     </div>
   );
 };

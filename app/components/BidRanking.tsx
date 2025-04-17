@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import PlaceBidModal from "./Common/PlacebidModal";
+import { Button } from "./ui/button";
 
 interface BidItem {
   logo: string;
