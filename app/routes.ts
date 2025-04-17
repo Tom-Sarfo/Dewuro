@@ -12,5 +12,9 @@ export default [
       index("./components/AdTypeUploadSection.tsx"),
       route("details", "./routes/GoLiveDetails.tsx"),
     ]),
+    route("adspace-booking", "./routes/AdSpaceBooking.tsx", [
+      index("./components/Booking/AdBookingStepOne.tsx"),
+      route("step-two", "./components/Booking/AdBookingStepTwo.tsx"),
+    ]),
   ]),
 ] satisfies RouteConfig;
