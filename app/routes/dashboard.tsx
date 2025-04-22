@@ -16,7 +16,7 @@ import FiltersIcon from "~/svg/Filters";
 import FilterGroup from "~/components/FilterGroup";
 import { BrandListingCard } from "~/components/Common/BrandListingCard";
 import DewuroLogo from "~/svg/DewuroLogo";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Dashboard = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -85,7 +85,8 @@ const Dashboard = () => {
         </span>
         <div className="mt-3 flex flex-col gap-3">
           {creators.map((creator, i) => (
-            <AdSpaceCard
+           <Link to="/creator-profile" key={i}>
+           <AdSpaceCard
               key={i}
               name={creator.name}
               price={creator.price}
@@ -93,6 +94,7 @@ const Dashboard = () => {
               tag={creator.tag}
               onSponsor={handleSponsorClick}
             />
+           </Link> 
           ))}
         </div>
         {/* Brand Listings */}
