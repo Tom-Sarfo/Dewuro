@@ -9,6 +9,7 @@ import TwoColumnTable from "../Common/TwoColumnTable";
 import BrandHistory from "./BrandCollaborationHistory";
 import CheckMark from "~/svg/CheckMark";
 import AvailableAdSpace from "./AvailableAdSpace";
+import ContentCalendar from "./ContentCalendar";
 // import { cn } from "../lib/utils"
 // import { StarIcon, CheckCircledIcon } from "@radix-ui/react-icons"
 
@@ -77,7 +78,12 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
                 {
                   left: (
                     <span>
-                      <Chip label="Creator:" />
+                      <Chip
+                        label="Creator:"
+                        bgColor="bg-[#7655FA]/10"
+                        textColor="text-[#7655FA]"
+                        className="rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap inline-block"
+                      />
                     </span>
                   ),
                   right: <span>Edward Owusu</span>,
@@ -85,7 +91,12 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
                 {
                   left: (
                     <span>
-                      <Chip label="Niche/Industry:" />
+                      <Chip
+                        label="Niche/Industry:"
+                        bgColor="bg-[#7655FA]/10"
+                        textColor="text-[#7655FA]"
+                        className="rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap inline-block"
+                      />
                     </span>
                   ),
                   right: <span>Travel</span>,
@@ -93,7 +104,12 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
                 {
                   left: (
                     <span>
-                      <Chip label="Avg Engagement Rate:" />
+                      <Chip
+                        label="Avg Engagement Rate:"
+                        bgColor="bg-[#7655FA]/10"
+                        textColor="text-[#7655FA]"
+                        className="rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap inline-block"
+                      />
                     </span>
                   ),
                   right: <span>1.2%</span>,
@@ -102,6 +118,8 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
             />
             <div className="border-t border-gray-200 my-4" />
             <BrandHistory />
+            <div className="border-t border-gray-200 my-4" />
+            <ContentCalendar />
           </>
         }
         tabTwoContent={<AvailableAdSpace />}

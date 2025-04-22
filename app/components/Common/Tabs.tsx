@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import { cn } from "~/lib/utils"
+import React, { useState } from "react";
+import { cn } from "~/lib/utils";
 
 interface TabsProps {
-  tabOneLabel: string
-  tabTwoLabel: string
-  tabOneContent: React.ReactNode
-  tabTwoContent: React.ReactNode
-  className?: string
+  tabOneLabel: string;
+  tabTwoLabel: string;
+  tabOneContent: React.ReactNode;
+  tabTwoContent: React.ReactNode;
+  className?: string;
 }
 
 export const Tabs: React.FC<TabsProps> = ({
@@ -16,7 +16,7 @@ export const Tabs: React.FC<TabsProps> = ({
   tabTwoContent,
   className,
 }) => {
-  const [activeTab, setActiveTab] = useState<"tab1" | "tab2">("tab1")
+  const [activeTab, setActiveTab] = useState<"tab1" | "tab2">("tab1");
 
   return (
     <div className={cn("w-full", className)}>
@@ -44,14 +44,12 @@ export const Tabs: React.FC<TabsProps> = ({
       </div>
 
       {/* Tabs Content */}
-      <div className="mt-6 h-full overflow-y-auto">
+      <div className="mt-6 overflow-y-auto">
         {activeTab === "tab1" && tabOneContent}
         {activeTab === "tab2" && tabTwoContent}
       </div>
     </div>
-  )
-}
+  );
+};
 
-
-export default Tabs
-
+export default Tabs;
