@@ -10,8 +10,8 @@ import BrandHistory from "./BrandCollaborationHistory";
 import CheckMark from "~/svg/CheckMark";
 import AvailableAdSpace from "./AvailableAdSpace";
 import ContentCalendar from "./ContentCalendar";
-// import { cn } from "../lib/utils"
-// import { StarIcon, CheckCircledIcon } from "@radix-ui/react-icons"
+import Featured from "./Featured";
+
 
 interface CreatorProfileCardProps {
   bannerUrl: string;
@@ -116,6 +116,8 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
                 },
               ]}
             />
+            <div className="border-t border-gray-200 my-4" />
+            <Featured />
             <div className="border-t border-gray-200 my-4" />
             <BrandHistory />
             <div className="border-t border-gray-200 my-4" />
