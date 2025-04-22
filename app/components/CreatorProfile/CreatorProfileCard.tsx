@@ -8,6 +8,7 @@ import { Badge } from "../ui/badge";
 import TwoColumnTable from "../Common/TwoColumnTable";
 import BrandHistory from "./BrandCollaborationHistory";
 import CheckMark from "~/svg/CheckMark";
+import AvailableAdSpace from "./AvailableAdSpace";
 // import { cn } from "../lib/utils"
 // import { StarIcon, CheckCircledIcon } from "@radix-ui/react-icons"
 
@@ -103,7 +104,7 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
             <BrandHistory />
           </>
         }
-        tabTwoContent={<div>This is the ad space tab</div>}
+        tabTwoContent={<AvailableAdSpace />}
       />
       <div className="fixed bottom-0 left-0 w-full bg-white border-t z-50 flex justify-between items-center px-4 py-3 bg-[#f9f9f9]">
         <button
