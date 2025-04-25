@@ -9,6 +9,10 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import ErrorPage from "./svg/ErrorPage";
+import Header from "./components/Common/Header";
+import { useState } from "react";
+import SideMenu from "./components/SideMenu";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -46,6 +50,8 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
@@ -62,14 +68,26 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <>
+      <Header title="Dewuro" onMenuClick={() => setIsSideMenuOpen(true)} />
+      <main className="pt-24 p-4 container mx-auto">
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {isRouteErrorResponse(error) && error.status === 404 ? (
+          <div className="flex justify-center items-center">
+            <ErrorPage />
+          </div>
+        ) : null}
+        {stack && (
+          <pre className="w-full p-4 overflow-x-auto">
+            <code>{stack}</code>
+          </pre>
+        )}
+        <SideMenu
+          isOpen={isSideMenuOpen}
+          onClose={() => setIsSideMenuOpen(false)}
+        />
+      </main>
+    </>
   );
 }
