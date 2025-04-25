@@ -7,7 +7,7 @@ interface AdSpaceCardProps {
   readonly tag: string;
   readonly adType?: string;
   readonly logoUrl?: string;
-  readonly onSponsor?: () => void;
+  readonly onSponsor?: (e: React.MouseEvent) => void;
 }
 
 export default function AdSpaceCard({
@@ -57,7 +57,10 @@ export default function AdSpaceCard({
       {/* Button */}
       <div className="min-w-[70px]">
         <button
-          onClick={onSponsor}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSponsor?.(e);
+          }}
           className="bg-[#7655FA] text-white text-[10px] sm:text-sm px-2 py-[5px] rounded-md font-semibold w-full"
         >
           Sponsor
