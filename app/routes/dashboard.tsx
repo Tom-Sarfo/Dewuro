@@ -26,8 +26,8 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
-  const handleSponsorClick = () => {
-    navigate(`/adspace-booking/`); // Replace with the actual route including creatorId
+  const handleSponsorClick = (creatorName: string) => {
+    navigate(`/adspace-booking`);
   };
 
   const handleApplyFilters = () => {
@@ -85,16 +85,20 @@ const Dashboard = () => {
         </span>
         <div className="mt-3 flex flex-col gap-3">
           {creators.map((creator, i) => (
-           <Link to="/creator-profile" key={i}>
-           <AdSpaceCard
-              key={i}
-              name={creator.name}
-              price={creator.price}
-              logoUrl={creator.logoUrl}
-              tag={creator.tag}
-              onSponsor={handleSponsorClick}
-            />
-           </Link> 
+            <Link to="/creator-profile" key={i} className="block">
+              <AdSpaceCard
+                key={i}
+                name={creator.name}
+                price={creator.price}
+                logoUrl={creator.logoUrl}
+                tag={creator.tag}
+                onSponsor={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleSponsorClick(creator.name);
+                }}
+              />
+            </Link>
           ))}
         </div>
         {/* Brand Listings */}
