@@ -17,5 +17,6 @@ export default [
       route("step-two", "./components/Booking/AdBookingStepTwo.tsx"),
     ]),
     route("creator-profile", "./routes/creatorProfile.tsx"),
+    route("creator-ranking", "./routes/CreatorRanking.tsx"),
   ]),
 ] satisfies RouteConfig;
