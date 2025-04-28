@@ -18,5 +18,9 @@ export default [
     ]),
     route("creator-profile", "./routes/creatorProfile.tsx"),
     route("creator-ranking", "./routes/CreatorRanking.tsx"),
+    route("brand-campaign", "./routes/CampaignDetails.tsx", [
+      // index("./components/Booking/AdBookingStepOne.tsx"),
+      // route("step-two", "./components/Booking/AdBookingStepTwo.tsx"),
+    ]),
   ]),
 ] satisfies RouteConfig;
