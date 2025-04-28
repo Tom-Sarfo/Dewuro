@@ -11,6 +11,7 @@ import CheckMark from "~/svg/CheckMark";
 import AvailableAdSpace from "./AvailableAdSpace";
 import ContentCalendar from "./ContentCalendar";
 import Featured from "./Featured";
+import { Link } from "react-router";
 
 
 interface CreatorProfileCardProps {
@@ -127,12 +128,12 @@ export const CreatorProfileCard: React.FC<CreatorProfileCardProps> = ({
         tabTwoContent={<AvailableAdSpace />}
       />
       <div className="fixed bottom-0 left-0 w-full bg-white border-t z-50 flex justify-between items-center px-4 py-3 bg-[#f9f9f9]">
-        <button
+        <Link
+          to="/chat"
           className="text-[#805CF7] font-medium px-4 py-2 bg-white border rounded-md"
-          onClick={() => {}}
         >
           Chat now
-        </button>
+        </Link>
       </div>
     </div>
   );
