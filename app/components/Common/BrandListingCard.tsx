@@ -1,7 +1,8 @@
-
 import React from "react";
+import { Link } from "react-router";
 
 interface BrandListingCardProps {
+  id: string;
   logo: string;
   brand: string;
   title: string;
@@ -10,6 +11,7 @@ interface BrandListingCardProps {
 }
 
 export const BrandListingCard: React.FC<BrandListingCardProps> = ({
+  id,
   logo,
   brand,
   title,
@@ -34,9 +36,12 @@ export const BrandListingCard: React.FC<BrandListingCardProps> = ({
           </div>
         </div>
       </div>
-      <button className="px-4 py-1 text-xs rounded-md bg-[#7655FA] text-white hover:bg-[#6847e3]">
+      <Link
+        to="/brand-campaign"
+        className="px-4 py-1 text-xs rounded-md bg-[#7655FA] text-white hover:bg-[#6847e3] transition-colors"
+      >
         View
-      </button>
+      </Link>
     </div>
   );
 };

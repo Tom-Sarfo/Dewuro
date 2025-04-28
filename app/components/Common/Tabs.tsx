@@ -7,6 +7,8 @@ interface TabsProps {
   tabOneContent: React.ReactNode;
   tabTwoContent: React.ReactNode;
   className?: string;
+  activeTab?: "tab1" | "tab2";
+  setActiveTab?: (tab: "tab1" | "tab2") => void;
 }
 
 export const Tabs: React.FC<TabsProps> = ({
@@ -15,8 +17,14 @@ export const Tabs: React.FC<TabsProps> = ({
   tabOneContent,
   tabTwoContent,
   className,
+  activeTab: controlledActiveTab,
+  setActiveTab: setControlledActiveTab,
 }) => {
-  const [activeTab, setActiveTab] = useState<"tab1" | "tab2">("tab1");
+  const [internalActiveTab, setInternalActiveTab] = useState<"tab1" | "tab2">(
+    "tab1"
+  );
+  const activeTab = controlledActiveTab ?? internalActiveTab;
+  const setActiveTab = setControlledActiveTab ?? setInternalActiveTab;
 
   return (
     <div className={cn("w-full", className)}>
